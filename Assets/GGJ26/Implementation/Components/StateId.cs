@@ -4,12 +4,10 @@ using UnityEngine;
 
 public enum EStateId
 {
-    Idle = 0,
-    Patrol,
+    Roam,
     Chase,
     Attack,
     Hurt,
-    Fall,
     Spawn,
     Stunned
 }
