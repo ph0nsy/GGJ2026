@@ -28,12 +28,12 @@ public class Player : Character
 
         if (pi.attackPressed)
         {
-            Debug.Log("Attack");
+
         }
 
         if (pi.swapMaskPressed)
         {
-            Debug.Log("Swap");
+
         }
     }
 }
