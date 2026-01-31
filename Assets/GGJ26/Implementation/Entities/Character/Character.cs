@@ -15,7 +15,7 @@ public class Character : MonoBehaviour
     protected DamageComponent m_damage;
     protected MoveComponent m_movement;
 
-    void Awake()
+    protected virtual void Awake()
     {
         m_anim = GetComponent<Animator>();
         m_collider = GetComponent<BoxCollider2D>();
@@ -27,7 +27,7 @@ public class Character : MonoBehaviour
         m_movement = GetComponent<MoveComponent>();
     }
 
-    void Start()
+    protected virtual void Start()
     {
         m_health.MaxHP = Data.maxHealth;
         m_health.CurrentHP = Data.maxHealth;
@@ -37,5 +37,6 @@ public class Character : MonoBehaviour
         m_damage.AttackDmg = Data.attackDamage;
         m_damage.CollisionDmg = Data.collisionDamage;
         m_movement.MoveSpeed = Data.moveSpeed;
+        Debug.Log("BaseClass.Start()");
     }
 }

@@ -10,14 +10,17 @@ public class Player : Character
     [SerializeField] PlayerData playerProgress;
     public PlayerInput pi;
 
-    void Awake()
+    protected override void Awake()
     {
-        if(!Instance) { Instance = this; }
+        base.Awake();
+        if (!Instance) { Instance = this; }
     }
 
-    void Start()
+    protected override void Start()
     {
-        m_control.GetComponent<PlayerControl>();
+        base.Start();
+        m_control = GetComponent<PlayerControl>();
+        Debug.Log("PlayerClass.Start()");
     }
 
     void Update()
@@ -25,6 +28,7 @@ public class Player : Character
         pi = m_control.ReadInput();
 
         m_movement.targetLoc = transform.position + new Vector3(pi.move.x, pi.move.y, 0f);
+        Debug.Log("Semen:" + m_movement.targetLoc);
 
         if (pi.attackPressed)
         {
