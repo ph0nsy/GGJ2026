@@ -6,8 +6,9 @@ public class Player : Character
 {
     public static Player Instance { get; private set; }
 
-    [SerializeField] PlayerData playerProgress;
     PlayerControl m_control;
+    [SerializeField] PlayerData playerProgress;
+    public PlayerInput pi;
 
     void Awake()
     {
@@ -21,9 +22,18 @@ public class Player : Character
 
     void Update()
     {
-        PlayerInput pi = m_control.ReadInput();
+        pi = m_control.ReadInput();
 
-        // Handle Input
-        
+        m_movement.targetLoc = transform.position + new Vector3(pi.move.x, pi.move.y, 0f);
+
+        if (pi.attackPressed)
+        {
+            Debug.Log("Attack");
+        }
+
+        if (pi.swapMaskPressed)
+        {
+            Debug.Log("Swap");
+        }
     }
 }

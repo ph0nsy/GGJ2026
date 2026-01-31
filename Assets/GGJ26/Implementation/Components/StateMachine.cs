@@ -5,13 +5,27 @@ using UnityEngine;
 public class StateMachine
 {
     IState Current { get; set; }
-    [SerializeField] Dictionary<EStateId, IState> m_states;
+    Dictionary<EStateId, IState> m_states;
 
-    public void Init()
+    public void Init(Dictionary<EStateId, IState> states, Transform parent)
     {
-        // if(OwnsState(Hurt)) Delegates += () => Current = Hurt;
-        // if(OwnsState(Stun)) Delegates += () => Current = Stun;
-        // if(OwnsState(Spawn)) Delegates += () => Current = Spawn;
+        foreach(var key in states.Keys) 
+        {
+            IState temp = states[key];
+            temp.m_character = parent.GetComponent<Enemy>();
+            m_states.Add(key, temp);
+        }
+        
+        if (OwnsState(EStateId.Hurt))
+        {
+            parent.GetComponent<HealthComponent>().OnHealthChanged += HurtHijack;
+        }
+    }
+
+    public void HurtHijack(int DamageDealt, bool bNotDamaged)
+    {
+        if(bNotDamaged) { return; }
+        ChangeState(EStateId.Hurt);
     }
 
     public void ChangeState(EStateId _nextState)
@@ -31,5 +45,10 @@ public class StateMachine
     { 
         Current?.GameplayUpdate();
         Current?.EvaluateChange();
+    }
+
+    public void OnDestroy()
+    {
+        // if(OwnsState(Hurt)) Delegates -= () => Current = Hurt;
     }
 }

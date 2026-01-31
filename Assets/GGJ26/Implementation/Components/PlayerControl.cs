@@ -5,9 +5,8 @@ using UnityEngine;
 public struct PlayerInput
 {
     public Vector2 move;
-    public bool jumpPressed;
-    public bool crouchPressed;
-    public bool interactPressed;
+    public Vector2 look;
+    public bool swapMaskPressed;
     public bool attackPressed;
 }
 
@@ -21,10 +20,12 @@ public class PlayerControl : MonoBehaviour
                 Input.GetJoystickNames().Length > 0 ? Input.GetAxisRaw("LeftStickX") : Input.GetAxisRaw("Horizontal"),
                 Input.GetJoystickNames().Length > 0 ? Input.GetAxisRaw("LeftStickY") : Input.GetAxisRaw("Vertical")
             ),
-            jumpPressed = Input.GetJoystickNames().Length > 0 ? Input.GetButtonDown("A") : Input.GetButtonDown("Jump"),
-            attackPressed = Input.GetJoystickNames().Length > 0 ? Input.GetButtonDown("X") : Input.GetButtonDown("Fire1"),
-            crouchPressed = Input.GetJoystickNames().Length > 0 ? Input.GetButtonDown("B") : Input.GetButtonDown("Fire2"),
-            interactPressed = Input.GetJoystickNames().Length > 0 ? Input.GetButtonDown("Y") : Input.GetButtonDown("Fire3")
+            look = new Vector2(
+                Input.GetJoystickNames().Length > 0 ? Input.GetAxisRaw("RightStickX") : Input.GetAxisRaw("MouseX"),
+                Input.GetJoystickNames().Length > 0 ? Input.GetAxisRaw("RightStickY") : Input.GetAxisRaw("MouseY")
+            ),
+            swapMaskPressed = Input.GetButtonDown("Fire2"),
+            attackPressed = Input.GetButtonDown("Fire1"),
         };
     }
 }

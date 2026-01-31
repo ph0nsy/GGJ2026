@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] protected CharacterData Data;
+    public CharacterData Data;
 
-    Animator m_anim;
-    BoxCollider2D m_collider;
-    Rigidbody2D m_rb;
+    protected Animator m_anim;
+    protected BoxCollider2D m_collider;
+    protected Rigidbody2D m_rb;
 
-    HealthComponent m_health;
-    HitComponent m_hitbox;
-    DamageComponent m_damage;
-    MoveComponent m_movement;
+    protected HealthComponent m_health;
+    protected HitComponent m_hitbox;
+    protected DamageComponent m_damage;
+    protected MoveComponent m_movement;
 
     void Awake()
     {

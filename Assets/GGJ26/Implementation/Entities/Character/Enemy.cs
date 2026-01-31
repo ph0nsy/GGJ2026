@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : Character
 {
+    [SerializeField] Dictionary<EStateId, IState> m_states;
     [HideInInspector] public StateMachine m_fsm;
     PerceptionComponent m_perception;
 
@@ -15,6 +16,7 @@ public class Enemy : Character
     
     void Start()
     {
+        m_fsm.Init(m_states, transform);
         m_perception.Range = ((EnemyData)Data).awarenessRange;
     }
 
@@ -26,5 +28,10 @@ public class Enemy : Character
     void Update()
     {
         m_fsm.Update();
+    }
+
+    void OnDestroy()
+    {
+        m_fsm.OnDestroy();    
     }
 }
