@@ -5,6 +5,14 @@ using UnityEngine;
 public class HitComponent : MonoBehaviour
 {
 
+    [HideInInspector] public EAttackType Type { get; set; }
+    [HideInInspector] public float Range { get; set; }
+    [HideInInspector] public float Cooldown { get; set; }
+
+    public bool bOverHeated = false;
+
+    float m_cooldownTimer = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,33 +21,53 @@ public class HitComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!bOverHeated) { return; }
+
+        m_cooldownTimer -= Time.deltaTime;
+        if (m_cooldownTimer <= 0) 
+        {
+            bOverHeated = false;
+        }
     }
 
-    public Collider2D[] getCollidersInBeam(Vector3 source, float range, float width, Vector3 direction, string mask){
-        
+    public Collider2D[] getColliders(Vector3 source, Vector3 direction, string mask)
+    {
+        switch (Type)
+        {
+            case EAttackType.Half:
+            case EAttackType.Quarter:
+            case EAttackType.Eigth:
+                return getCollidersInArch(source, direction, mask);
+            case EAttackType.Line:
+            default:
+                return getCollidersInBeam(source, direction, mask);
+        }
+    }
+
+    public Collider2D[] getCollidersInBeam(Vector3 source, Vector3 direction, string mask){
         float angle = getPolarCoordinates(direction).y;
         Collider2D[] hits = Physics2D.OverlapBoxAll(
-            source + (range/2) * direction.normalized,
-            new Vector2(range, width),
+            source + Range/2 * direction.normalized,
+            new Vector2(Range, getWidth()),
             angle,
             LayerMask.GetMask(mask)
         );
+        m_cooldownTimer = Cooldown;
         return hits;
     }
 
-    public Collider2D[] getCollidersInArch(Vector3 source, float range, float angle, Vector3 direction, string mask)
+    public Collider2D[] getCollidersInArch(Vector3 source, Vector3 direction, string mask)
     {
         List<Collider2D> hits = new List<Collider2D>();
         Collider2D[] aux = Physics2D.OverlapCircleAll(
             source,
-            range,
+            Range,
             LayerMask.GetMask(mask)
         );
 
         foreach (Collider2D target in aux)
         {
-            if (checkArchHitBox(target.transform.position, source, direction, range, angle)){
+            if (checkArchHitBox(target.transform.position, source, direction, Range, getWidth())){
                 hits.Add(target);
             }
         }
@@ -61,7 +89,22 @@ public class HitComponent : MonoBehaviour
         return checkInsideBox(Aa, Bb, polarRelOther);
     }
 
-
+    float getWidth()
+    {
+        switch (Type)
+        {
+            case EAttackType.Half:
+                return Mathf.PI;
+            case EAttackType.Quarter:
+                return Mathf.PI/2;
+            case EAttackType.Eigth:
+                return Mathf.PI/4;
+            case EAttackType.Line:
+                return Range/4;
+            default: 
+                return 0;
+        }
+    }
 
     public Vector2 getPolarCoordinates(Vector3 euclidCoord)
     {

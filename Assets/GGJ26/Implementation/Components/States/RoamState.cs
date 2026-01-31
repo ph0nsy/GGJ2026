@@ -23,7 +23,11 @@ public class Roam : IState
 
         m_perception.OnPlayerDetected += playerDetection;
     }
-    public void Exit() { }
+    
+    public void Exit()
+    {
+        m_perception.OnPlayerDetected -= playerDetection;
+    }
     public void PhysicsUpdate() 
     {
         area = Random.Range(areaRange.x, areaRange.y);
