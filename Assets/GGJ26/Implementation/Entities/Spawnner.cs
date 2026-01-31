@@ -14,7 +14,7 @@ public class Spawnner : MonoBehaviour
     {
         m_camera = FindObjectOfType<Camera>();        
     }
-    // Update is called once per frame
+
     void Update()
     {
         Vector2 screenPos = m_camera.WorldToScreenPoint(transform.position);
