@@ -100,7 +100,7 @@ public class HitComponent : MonoBehaviour
             case EAttackType.Eigth:
                 return Mathf.PI/4;
             case EAttackType.Line:
-                return Range/4;
+                return Range/5;
             default: 
                 return 0;
         }
