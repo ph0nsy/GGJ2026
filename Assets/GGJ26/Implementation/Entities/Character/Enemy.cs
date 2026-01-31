@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    [SerializeField] Dictionary<EStateId, IState> m_states;
-    [HideInInspector] public StateMachine m_fsm;
+    public Dictionary<EStateId, IState> States;
+
+    [HideInInspector] 
+    public StateMachine m_fsm;
+    
     PerceptionComponent m_perception;
 
     void Awake()
@@ -16,7 +19,7 @@ public class Enemy : Character
     
     void Start()
     {
-        m_fsm.Init(m_states, transform);
+        m_fsm.Init(States, transform);
         m_perception.Range = ((EnemyData)Data).awarenessRange;
     }
 
