@@ -8,6 +8,8 @@ public class MoveComponent : MonoBehaviour
     [HideInInspector] public float MoveSpeed { get; set; }
 
     [HideInInspector] public Vector2 m_direction { get; set; }
+    [HideInInspector] public Vector3 targetLoc { get; set; }
+
     Vector3 moveVector = new Vector3(0, 0, 0);
 
     private void Start()
@@ -17,6 +19,7 @@ public class MoveComponent : MonoBehaviour
 
     void Update()
     {
+        m_direction = targetLoc - transform.position.normalized;
         moveVector.x = m_direction.x * MoveSpeed * Time.deltaTime;
         moveVector.y = m_direction.y * MoveSpeed * Time.deltaTime;
         transform.position += moveVector;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IState
 {      
-    public Character m_character { get; set; }
+    public Enemy m_character { get; set; }
 
     public abstract void Enter();
     public abstract void Exit();

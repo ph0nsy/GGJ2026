@@ -7,6 +7,13 @@ public class StateMachine
     IState Current { get; set; }
     [SerializeField] Dictionary<EStateId, IState> m_states;
 
+    public void Init()
+    {
+        // if(OwnsState(Hurt)) Delegates += () => Current = Hurt;
+        // if(OwnsState(Stun)) Delegates += () => Current = Stun;
+        // if(OwnsState(Spawn)) Delegates += () => Current = Spawn;
+    }
+
     public void ChangeState(EStateId _nextState)
     {
         Current?.Exit();

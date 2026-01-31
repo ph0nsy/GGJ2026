@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    [SerializeField] StateMachine m_fsm;
+    [HideInInspector] public StateMachine m_fsm;
     PerceptionComponent m_perception;
 
     void Awake()
-    {    
+    {
+        m_fsm = new();
         m_perception = GetComponent<PerceptionComponent>();
     }
     
@@ -17,8 +18,13 @@ public class Enemy : Character
         m_perception.Range = ((EnemyData)Data).awarenessRange;
     }
 
+    void FixedUpdate()
+    {
+        m_fsm.FixedUpdate();
+    }
+
     void Update()
     {
-        // Handle FSM
+        m_fsm.Update();
     }
 }

@@ -18,6 +18,7 @@ public class HealthComponent : MonoBehaviour
 
     public event Action<int, bool> OnHealthChanged;
     public event Action OnDeath;
+    public event Action OnLostInvulnerable;
 
     public void Init(int _maxHP, int _currentHP)
     {
@@ -30,7 +31,11 @@ public class HealthComponent : MonoBehaviour
         if (!bInvulnerable) { return; }
 
         m_invulnTimer -= Time.deltaTime;
-        if (m_invulnTimer <= 0) { bInvulnerable = false; }
+        if (m_invulnTimer <= 0) 
+        {
+            bInvulnerable = false;
+            OnLostInvulnerable?.Invoke();
+        }
     }
 
     public void Damage(int _amount)
