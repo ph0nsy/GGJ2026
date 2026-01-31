@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class ButtonBehaviours : MonoBehaviour
@@ -43,6 +44,12 @@ public class ButtonBehaviours : MonoBehaviour
     }
 
     public void StartGame(){
+        GetComponent<UnityEngine.UI.Button>().interactable = false;
+        SceneManager.LoadScene("game_scene");
+    }
 
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
