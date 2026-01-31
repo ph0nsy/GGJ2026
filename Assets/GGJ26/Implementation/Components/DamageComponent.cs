@@ -26,7 +26,7 @@ public class DamageComponent : MonoBehaviour
         }
     }
 
-    private void DealAttackDamage(Collider2D[] targets)
+    public void DealAttackDamage(Collider2D[] targets)
     {
         foreach (Collider2D tgt in targets)
         {

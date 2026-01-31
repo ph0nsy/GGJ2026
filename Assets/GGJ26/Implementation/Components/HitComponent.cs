@@ -30,6 +30,20 @@ public class HitComponent : MonoBehaviour
         }
     }
 
+    public Collider2D[] getColliders(Vector3 source, Vector3 direction, string mask)
+    {
+        switch (Type)
+        {
+            case EAttackType.Half:
+            case EAttackType.Quarter:
+            case EAttackType.Eigth:
+                return getCollidersInArch(source, direction, mask);
+            case EAttackType.Line:
+            default:
+                return getCollidersInBeam(source, direction, mask);
+        }
+    }
+
     public Collider2D[] getCollidersInBeam(Vector3 source, Vector3 direction, string mask){
         float angle = getPolarCoordinates(direction).y;
         Collider2D[] hits = Physics2D.OverlapBoxAll(
