@@ -31,9 +31,9 @@ public class Character : MonoBehaviour
     {
         m_health.MaxHP = Data.maxHealth;
         m_health.CurrentHP = Data.maxHealth;
-        // m_hitbox.Type = Data.attackType;
-        // m_hitbox.Range = Data.attackRange;
-        // m_hitbox.Cooldown = Data.attackCooldown;
+        m_hitbox.Type = Data.attackType;
+        m_hitbox.Range = Data.attackRange;
+        m_hitbox.Cooldown = Data.attackCooldown;
         m_damage.AttackDmg = Data.attackDamage;
         m_damage.CollisionDmg = Data.collisionDamage;
         m_movement.MoveSpeed = Data.moveSpeed;
