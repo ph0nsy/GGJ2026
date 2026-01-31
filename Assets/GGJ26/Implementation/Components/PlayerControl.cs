@@ -21,8 +21,8 @@ public class PlayerControl : MonoBehaviour
                 Input.GetJoystickNames().Length > 0 ? Input.GetAxisRaw("LeftStickY") : Input.GetAxisRaw("Vertical")
             ),
             look = new Vector2(
-                Input.GetJoystickNames().Length > 0 ? Input.GetAxisRaw("RightStickX") : Input.GetAxisRaw("MouseX"),
-                Input.GetJoystickNames().Length > 0 ? Input.GetAxisRaw("RightStickY") : Input.GetAxisRaw("MouseY")
+                Input.GetJoystickNames().Length > 0 ? Input.GetAxisRaw("RightStickX") : Input.GetAxisRaw("Mouse X"),
+                Input.GetJoystickNames().Length > 0 ? Input.GetAxisRaw("RightStickY") : Input.GetAxisRaw("Mouse Y")
             ),
             swapMaskPressed = Input.GetButtonDown("Fire2"),
             attackPressed = Input.GetButtonDown("Fire1"),
