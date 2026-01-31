@@ -8,9 +8,10 @@ public class Character : MonoBehaviour
 
     Animator m_anim;
     BoxCollider2D m_collider;
+    Rigidbody2D m_rb;
 
     HealthComponent m_health;
-    // HitboxComponent m_hitbox;
+    HitComponent m_hitbox;
     DamageComponent m_damage;
     MoveComponent m_movement;
 
@@ -18,9 +19,10 @@ public class Character : MonoBehaviour
     {
         m_anim = GetComponent<Animator>();
         m_collider = GetComponent<BoxCollider2D>();
+        m_rb = GetComponent<Rigidbody2D>();
 
         m_health = GetComponent<HealthComponent>();
-        // m_hitbox = GetComponent<HitboxComponent>();
+        m_hitbox = GetComponent<HitComponent>();
         m_damage = GetComponent<DamageComponent>();
         m_movement = GetComponent<MoveComponent>();
     }
