@@ -19,4 +19,4 @@ MonoBehaviour:
   attackDamage: 3
   collisionDamage: 1
   typesWeakness: 
-  moveSpeed: 10
+  moveSpeed: 7

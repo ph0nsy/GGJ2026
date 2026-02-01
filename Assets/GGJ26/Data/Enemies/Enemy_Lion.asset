@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d19872142bcab043b2a5a7c898e5b14, type: 3}
   m_Name: Enemy_Lion
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 5
   attackType: 0
   attackRange: 1
   attackCooldown: 0.5
-  attackDamage: 2
+  attackDamage: 1
   collisionDamage: 1
   typesWeakness: 
-  moveSpeed: 3
-  awarenessRange: 5
+  moveSpeed: 6
+  awarenessRange: 7
