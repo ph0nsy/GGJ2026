@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_C
       objectReference: {fileID: 0}
+    - target: {fileID: 4460205536367047576, guid: 6e9adb0bc515f9f47bd09a724f90dbbd, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 58bf2a73fe0af7c4492a27d92c6782b7, type: 2}
     - target: {fileID: 4460205536367047588, guid: 6e9adb0bc515f9f47bd09a724f90dbbd, type: 3}
       propertyPath: m_RootOrder
       value: 0
