@@ -14,13 +14,9 @@ public class Attack : IState
 
     MoveComponent m_movement;
 
-    bool playerDetected = false;
-
     List<Collider2D> emptyArray = new List<Collider2D>();
 
     Collider2D[] hits;
-
-    void playerDetection(bool bPlayer) { playerDetected = bPlayer; }
 
     public void Enter() 
     {
@@ -30,12 +26,10 @@ public class Attack : IState
         m_damage = m_character.transform.GetComponent<DamageComponent>();
 
         hits = emptyArray.ToArray();
-        m_perception.OnPlayerDetected += playerDetection;
     }
-    public void Exit()
-    {
-        m_perception.OnPlayerDetected -= playerDetection;
-    }
+
+    public void Exit() { }
+
     public void PhysicsUpdate()
     {
         if (!m_hitBox.bOverHeated)
@@ -66,6 +60,6 @@ public class Attack : IState
 
     bool IsTargetInRangeOfAttack()
     {
-       return (m_movement.targetLoc-m_character.transform.position).magnitude <= m_hitBox.Range;
+       return (Player.Instance.transform.position - m_character.transform.position).magnitude <= m_hitBox.Range;
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Roam : IState
+public class Hurt : IState
 {      
     [HideInInspector] public Enemy m_character { get; set; }
 
@@ -15,14 +15,13 @@ public class Roam : IState
     Collider2D[] cols;
     float area = 0.0f;
     void playerDetection(bool bPlayer) 
-    { 
+    {
         playerDetected = bPlayer;
-        Debug.Log("Roam state -> player" + (bPlayer ? "detected" : "lost"));
+        Debug.Log("Hurt state -> player" + (bPlayer ? "detected" : "lost"));
     }
 
     public void Enter() 
     {
-        Debug.Log("Enter Roam");
         m_perception = m_character.transform.GetComponent<PerceptionComponent>();
         m_movement = m_character.transform.GetComponent<MoveComponent>();
 
@@ -31,7 +30,6 @@ public class Roam : IState
     
     public void Exit()
     {
-        Debug.Log("Exit Roam");
         m_perception.OnPlayerDetected -= playerDetection;
     }
     public void PhysicsUpdate() 
@@ -54,21 +52,18 @@ public class Roam : IState
                 sum.x += col.transform.position.x;
                 sum.y += col.transform.position.x;
             }
-            //Debug.Log("Inverse: " + -sum.normalized * area);
             m_movement.Move(m_character.transform.position + (-sum.normalized * area));
             return;
         }
-        sum.x = Random.Range(-areaRange.y, areaRange.y);
-        sum.y = Random.Range(-areaRange.y, areaRange.y);
+        sum.x = Random.Range(areaRange.x, areaRange.y);
+        sum.y = Random.Range(areaRange.x, areaRange.y);
         m_movement.Move(m_character.transform.position + (sum.normalized * area));
     }
     public void EvaluateChange() 
     {
         if (playerDetected && m_character.m_fsm.OwnsState(EStateId.Chase))
         {
-            Debug.Log("change to chase");
             m_character.m_fsm.ChangeState(EStateId.Chase);
         }
     } 
-    
 }
