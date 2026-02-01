@@ -21,7 +21,7 @@ public class Player : Character
         base.Start();
         m_control = GetComponent<PlayerControl>();
         m_health.OnDeath += Die;
-        m_health.OnHealthChanged += ;
+        m_health.OnHealthChanged += Hurt;
     }
 
     void Hurt(int ammount, bool bDamage)

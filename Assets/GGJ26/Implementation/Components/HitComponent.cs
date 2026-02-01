@@ -4,24 +4,30 @@ using UnityEngine;
 
 public class HitComponent : MonoBehaviour
 {
-
     [HideInInspector] public EAttackType Type { get; set; }
     [HideInInspector] public float Range { get; set; }
     [HideInInspector] public float Cooldown { get; set; }
+    [HideInInspector] public bool bOverHeated = false;
 
-    public GameObject attackSprite;
-
-    public bool bOverHeated = false;
+    [SerializeField] public GameObject attackSprite;
 
     float m_cooldownTimer = 0.0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (!attackSprite) { attackSprite = transform.GetChild(0).gameObject; }
     }
 
     void Update()
     {
+        Animator childAnimator = attackSprite.GetComponent<Animator>();
+        AnimatorStateInfo state = childAnimator.GetCurrentAnimatorStateInfo(0);
+        if (state.normalizedTime >= 1f)
+        {
+            attackSprite.SetActive(false);
+        }
+
         if (!bOverHeated) { return; }
 
         m_cooldownTimer -= Time.deltaTime;
@@ -29,10 +35,12 @@ public class HitComponent : MonoBehaviour
         {
             bOverHeated = false;
         }
+
     }
 
     public Collider2D[] getColliders(Vector3 source, Vector3 direction, string mask)
     {
+        attackSprite.SetActive(true);
         switch (Type)
         {
             case EAttackType.Half:
