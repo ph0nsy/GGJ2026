@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d19872142bcab043b2a5a7c898e5b14, type: 3}
-  m_Name: Enemy_A
+  m_Name: Enemy_Fiddle
   m_EditorClassIdentifier: 
   maxHealth: 1
   attackType: 4
