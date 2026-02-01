@@ -45,7 +45,7 @@ public class ButtonBehaviours : MonoBehaviour
 
     public void StartGame(){
         GetComponent<UnityEngine.UI.Button>().interactable = false;
-        SceneManager.LoadScene("game_scene");
+        SceneManager.LoadScene("MainScene");
     }
 
     public void QuitGame()
