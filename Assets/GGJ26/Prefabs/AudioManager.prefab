@@ -49,9 +49,18 @@ MonoBehaviour:
   adudiSourceSFX: {fileID: 6910242385441869980}
   adudiSourceBGM: {fileID: 6910242385441869971}
   hurtSFX: {fileID: 0}
-  slashSFX: []
-  laserSFX: []
-  fireSFX: []
+  slashSFX:
+  - {fileID: 8300000, guid: 523a773d5c235094cbf425ce7a024017, type: 3}
+  - {fileID: 8300000, guid: 159f7b569a7356c438198d0aec58521c, type: 3}
+  - {fileID: 8300000, guid: e65b2c6916f5c704db0bf59ac6ded83b, type: 3}
+  laserSFX:
+  - {fileID: 8300000, guid: 0f963e6fa56cc2b45af87a4bf1182075, type: 3}
+  - {fileID: 8300000, guid: ee5635f9d2b3a7044954a99ab2fec474, type: 3}
+  - {fileID: 8300000, guid: 2368338c1208d0941b228c157e00fc1e, type: 3}
+  fireSFX:
+  - {fileID: 8300000, guid: 94491b22d1a456242aa1704c509f2a61, type: 3}
+  - {fileID: 8300000, guid: d9f2f085f2a05034993cf559b5c653f0, type: 3}
+  - {fileID: 8300000, guid: b57380bc759cb1244b026b59e81e5d00, type: 3}
   levelBGM: {fileID: 0}
   hoverSFX: {fileID: 0}
   menuBGM: {fileID: 0}
