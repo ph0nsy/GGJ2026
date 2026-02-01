@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cb2ed63fcfab746be43e29f3cfe8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bOverHeated: 0
 --- !u!114 &8173764743372813999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,4 +236,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: 062c3a91785a61c4c9dc4003bd0b879a, type: 2}
-  playerProgress: {fileID: 11400000, guid: c232949c9de39c248a525a4aec4d12c8, type: 2}
+  Type: 3
+  playerProgress: {fileID: 11400000, guid: a81cb55f68e3d3a43823612e64e3a649, type: 2}

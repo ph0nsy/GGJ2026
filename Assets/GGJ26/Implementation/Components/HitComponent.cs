@@ -37,6 +37,7 @@ public class HitComponent : MonoBehaviour
             case EAttackType.Half:
             case EAttackType.Quarter:
             case EAttackType.Eigth:
+            case EAttackType.None:
                 return getCollidersInArch(source, direction, mask);
             case EAttackType.Line:
             default:
@@ -98,6 +99,7 @@ public class HitComponent : MonoBehaviour
             case EAttackType.Quarter:
                 return Mathf.PI/2;
             case EAttackType.Eigth:
+            case EAttackType.None:
                 return Mathf.PI/4;
             case EAttackType.Line:
                 return Range/5;

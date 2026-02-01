@@ -6,6 +6,7 @@ public class Character : MonoBehaviour
 {
     public CharacterData Data;
 
+    public EEntityType Type;
     protected Animator m_anim;
     protected BoxCollider2D m_collider;
     protected Rigidbody2D m_rb;
