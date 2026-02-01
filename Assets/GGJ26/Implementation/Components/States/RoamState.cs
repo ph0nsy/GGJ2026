@@ -28,7 +28,7 @@ public class Roam : IState
         m_movement = m_character.transform.GetComponent<MoveComponent>();
         m_animator = m_character.transform.GetComponent<Animator>();
 
-        m_animator.Play("Walk"); // esta tiene que loopear
+        m_animator.Play("walk"); // esta tiene que loopear
         m_perception.OnPlayerDetected += playerDetection;
     }
     

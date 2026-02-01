@@ -22,7 +22,7 @@ public class Hurt : IState
         m_health = m_character.transform.GetComponent<HealthComponent>();
         m_animator = m_character.transform.GetComponent<Animator>();
 
-        m_animator.Play("Hurt"); 
+        m_animator.Play("hit"); 
         m_health.OnDeath += EnemyDeath;
     }
     
@@ -31,7 +31,7 @@ public class Hurt : IState
         m_health.OnDeath -= EnemyDeath;
         if (bDead)
         { 
-            m_animator.Play("Death");
+            m_animator.Play("death");
             float deathAnimLength = m_animator.GetCurrentAnimatorStateInfo(0).length;
             Object.Destroy(m_character.gameObject, deathAnimLength);
         }

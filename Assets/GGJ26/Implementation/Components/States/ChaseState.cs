@@ -29,7 +29,7 @@ public class Chase : IState
         m_hitBox = m_character.transform.GetComponent<HitComponent>();
         m_animator = m_character.transform.GetComponent<Animator>();
 
-        m_animator.Play("Walk"); // esta tiene que loopear
+        m_animator.Play("walk"); // esta tiene que loopear
         m_perception.OnPlayerDetected += playerDetection;
     }
     public void Exit()
