@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d99ea1c3b41b5e44ead4329fef0cc6a4
+guid: c92b0f12152ab284fb9f39a6d6bdeed1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: catdeath_4
+      name: MASCARAS_0
       rect:
         serializedVersion: 2
-        x: 112
-        y: 13
-        width: 14
-        height: 14
+        x: 22
+        y: 6
+        width: 16
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,41 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b01e22a19a5e620489254e44e04bb0cb
-      internalID: 1047540592
+      spriteID: 23419a1f21231834d8cc2e626fe1746b
+      internalID: -1937971513
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: catdeath_0
+      name: MASCARAS_1
       rect:
         serializedVersion: 2
-        x: 4
-        y: 10
-        width: 26
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8abfae69f094be84e9a1a08ba62568f5
-      internalID: -2020789013
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: catdeath_1
-      rect:
-        serializedVersion: 2
-        x: 38
+        x: 46
         y: 7
-        width: 21
-        height: 24
+        width: 10
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8776532e34c9ac34582344a7adb87e53
-      internalID: -1573325560
+      spriteID: c5d733b5ef2231341850de3f6cf97741
+      internalID: 897111529
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: catdeath_2
+      name: MASCARAS_2
       rect:
         serializedVersion: 2
-        x: 67
-        y: 13
-        width: 14
-        height: 14
+        x: 66
+        y: 4
+        width: 16
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,29 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cb0412fdb2cb574facc36473995527c
-      internalID: -2127040768
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: catdeath_3
-      rect:
-        serializedVersion: 2
-        x: 90
-        y: 13
-        width: 14
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e64e85b9fa307dc459689051be86422f
-      internalID: 1204525019
+      spriteID: af13188b036ab1547ba0e02d3a534f24
+      internalID: -1937282198
       vertices: []
       indices: 
       edges: []
@@ -220,11 +178,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      catdeath_4: 1047540592
-      catdeath_3: 1204525019
-      catdeath_0: -2020789013
-      catdeath_1: -1573325560
-      catdeath_2: -2127040768
+      MASCARAS_0: -1937971513
+      MASCARAS_1: 897111529
+      MASCARAS_2: -1937282198
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
