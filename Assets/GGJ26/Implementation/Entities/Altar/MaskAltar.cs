@@ -10,7 +10,7 @@ public class Altar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pairTypeToAttack();
+        PairTypeToAttack();
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class Altar : MonoBehaviour
 
     public EAttackType PairTypeToAttack()
     {
-         switch (type)
+         switch (Type)
         {
             case EEntityType.lion:
                 Atype = EAttackType.Half;

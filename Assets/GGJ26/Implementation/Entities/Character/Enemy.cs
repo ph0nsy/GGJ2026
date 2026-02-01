@@ -41,7 +41,7 @@ public class Enemy : Character
     {
         Altar altar= getAltarOfSameType();
 
-        altar?.altarProgress.souls++;
+        altar?.altarProgress.souls += 1;
         
         if(altar?.altarProgress.souls == altar?.altarProgress.threshold){
             foreach (Altar a in FindObjectsOfType<Altar>())

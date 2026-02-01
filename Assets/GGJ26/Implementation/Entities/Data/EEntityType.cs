@@ -4,8 +4,8 @@ using UnityEngine;
 
 public enum EEntityType
 {
-    Bot,
-    Lion,
-    Fiddle,
+    bot,
+    lion,
+    fiddle,
     Player
 }
