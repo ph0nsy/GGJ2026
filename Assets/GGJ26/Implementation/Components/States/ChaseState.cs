@@ -15,7 +15,11 @@ public class Chase : IState
     bool playerDetected = false;
 
     Collider2D col;
-    void playerDetection(bool bPlayer) { playerDetected = bPlayer; }
+    void playerDetection(bool bPlayer) 
+    { 
+        playerDetected = bPlayer;
+        Debug.Log("Chase state -> player" + (bPlayer ? "detected" : "lost"));
+    }
 
     public void Enter() 
     {
@@ -35,7 +39,7 @@ public class Chase : IState
 
     public void GameplayUpdate() 
     {
-        m_movement.targetLoc = Player.Instance.transform.position;
+        m_movement.Move(Player.Instance.transform.position, true);
     }
     public void EvaluateChange() 
     {
@@ -52,6 +56,6 @@ public class Chase : IState
 
     bool IsTargetInRangeOfAttack()
     {
-       return (m_movement.targetLoc-m_character.transform.position).magnitude <= m_hitBox.Range;
+       return (Player.Instance.transform.position - m_character.transform.position).magnitude <= m_hitBox.Range;
     }
 }

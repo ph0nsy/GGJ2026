@@ -38,6 +38,5 @@ public class Character : MonoBehaviour
         m_damage.AttackDmg = Data.attackDamage;
         m_damage.CollisionDmg = Data.collisionDamage;
         m_movement.MoveSpeed = Data.moveSpeed;
-        Debug.Log("BaseClass.Start()");
     }
 }

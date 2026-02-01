@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    public Dictionary<EStateId, IState> States;
 
-    [HideInInspector] 
-    public StateMachine m_fsm;
+    [HideInInspector] public StateMachine m_fsm;
+    [SerializeField] List<EStateId> States;
     
     PerceptionComponent m_perception;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         m_fsm = new();
-        m_perception = GetComponent<PerceptionComponent>();
+        m_perception = transform.GetComponent<PerceptionComponent>();
     }
-    
-    void Start()
+
+    protected override void Start()
     {
+        base.Start();
         m_fsm.Init(States, transform);
         m_perception.Range = ((EnemyData)Data).awarenessRange;
         m_health.OnDeath += updateAltarCount;

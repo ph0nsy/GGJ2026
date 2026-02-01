@@ -20,15 +20,12 @@ public class Player : Character
     {
         base.Start();
         m_control = GetComponent<PlayerControl>();
-        Debug.Log("PlayerClass.Start()");
     }
 
     void Update()
     {
         pi = m_control.ReadInput();
-
-        m_movement.targetLoc = transform.position + new Vector3(pi.move.x, pi.move.y, 0f);
-        Debug.Log("Semen:" + m_movement.targetLoc);
+        m_movement.Move(pi.move);
 
         if (pi.attackPressed)
         {

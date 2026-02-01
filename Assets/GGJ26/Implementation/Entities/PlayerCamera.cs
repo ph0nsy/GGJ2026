@@ -7,7 +7,6 @@ public class PlayerCamera : MonoBehaviour
     public GameObject targetPlayer;
 
     public Vector2 deadzoneSize = new Vector2(0.5f, 0.5f);
-    public Vector2 verticalBounds = new Vector2(-5.0f, 1.5f);
     public float smoothTime = 0.2f;
 
     private Vector3 velocity;
@@ -39,11 +38,11 @@ public class PlayerCamera : MonoBehaviour
         // Vertical Scroll
         if (targetPos.y < deadzone.z)
         {
-            desiredPos.y = Mathf.Clamp(targetPos.y + deadzoneSize.y * 0.5f, verticalBounds.x, verticalBounds.y);
+            desiredPos.y = targetPos.y + deadzoneSize.y * 0.5f;
         }
         else if (targetPos.y > deadzone.w)
         {
-            desiredPos.y = Mathf.Clamp(targetPos.y - deadzoneSize.y * 0.5f, verticalBounds.x, verticalBounds.y);
+            desiredPos.y = targetPos.y - deadzoneSize.y * 0.5f;
         }
 
         // Adjust with lag (frame-rate independent)
