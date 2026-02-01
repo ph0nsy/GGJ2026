@@ -8,6 +8,7 @@ public class Roam : IState
 
     PerceptionComponent m_perception;
     MoveComponent m_movement;
+    Animator m_animator;
 
     bool playerDetected = false;
 
@@ -22,18 +23,20 @@ public class Roam : IState
 
     public void Enter() 
     {
-        Debug.Log("Enter Roam");
+
         m_perception = m_character.transform.GetComponent<PerceptionComponent>();
         m_movement = m_character.transform.GetComponent<MoveComponent>();
+        m_animator = m_character.transform.GetComponent<Animator>();
 
+        m_animator.Play("Walk"); // esta tiene que loopear
         m_perception.OnPlayerDetected += playerDetection;
     }
     
     public void Exit()
     {
-        Debug.Log("Exit Roam");
         m_perception.OnPlayerDetected -= playerDetection;
     }
+
     public void PhysicsUpdate() 
     {
         area = Random.Range(areaRange.x, areaRange.y);

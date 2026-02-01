@@ -6,62 +6,51 @@ public class Hurt : IState
 {      
     [HideInInspector] public Enemy m_character { get; set; }
 
-    PerceptionComponent m_perception;
-    MoveComponent m_movement;
+    HealthComponent m_health;
+    Animator m_animator;
 
-    bool playerDetected = false;
+    bool bDead = false;
+    bool bAnimDone = false;
 
-    Vector2 areaRange = new Vector2(2.0f, 5.0f);
-    Collider2D[] cols;
-    float area = 0.0f;
-    void playerDetection(bool bPlayer) 
+    void EnemyDeath() 
     {
-        playerDetected = bPlayer;
-        Debug.Log("Hurt state -> player" + (bPlayer ? "detected" : "lost"));
+        bDead = true;
     }
 
     public void Enter() 
     {
-        m_perception = m_character.transform.GetComponent<PerceptionComponent>();
-        m_movement = m_character.transform.GetComponent<MoveComponent>();
+        m_health = m_character.transform.GetComponent<HealthComponent>();
+        m_animator = m_character.transform.GetComponent<Animator>();
 
-        m_perception.OnPlayerDetected += playerDetection;
+        m_animator.Play("Hurt"); 
+        m_health.OnDeath += EnemyDeath;
     }
     
     public void Exit()
     {
-        m_perception.OnPlayerDetected -= playerDetection;
+        m_health.OnDeath -= EnemyDeath;
+        if (bDead)
+        { 
+            m_animator.Play("Death");
+            float deathAnimLength = m_animator.GetCurrentAnimatorStateInfo(0).length;
+            Object.Destroy(m_character.gameObject, deathAnimLength);
+        }
     }
-    public void PhysicsUpdate() 
-    {
-        area = Random.Range(areaRange.x, areaRange.y);
-        cols = Physics2D.OverlapCircleAll(
-            m_character.transform.position,
-            area,
-            LayerMask.GetMask("Walls")
-            );
-    }
+
+    public void PhysicsUpdate() { }
 
     public void GameplayUpdate() 
     {
-        Vector3 sum = new Vector3(0, 0, 0);
-        if (cols.Length > 0)
+        AnimatorStateInfo state = m_animator.GetCurrentAnimatorStateInfo(0);
+        if (state.IsName("Hurt") && state.normalizedTime >= 1f)
         {
-            foreach (var col in cols)
-            {
-                sum.x += col.transform.position.x;
-                sum.y += col.transform.position.x;
-            }
-            m_movement.Move(m_character.transform.position + (-sum.normalized * area));
-            return;
+            bAnimDone = true;
         }
-        sum.x = Random.Range(areaRange.x, areaRange.y);
-        sum.y = Random.Range(areaRange.x, areaRange.y);
-        m_movement.Move(m_character.transform.position + (sum.normalized * area));
     }
+
     public void EvaluateChange() 
     {
-        if (playerDetected && m_character.m_fsm.OwnsState(EStateId.Chase))
+        if (bAnimDone && m_character.m_fsm.OwnsState(EStateId.Chase))
         {
             m_character.m_fsm.ChangeState(EStateId.Chase);
         }

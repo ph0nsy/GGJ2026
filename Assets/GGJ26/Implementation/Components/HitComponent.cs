@@ -9,6 +9,8 @@ public class HitComponent : MonoBehaviour
     [HideInInspector] public float Range { get; set; }
     [HideInInspector] public float Cooldown { get; set; }
 
+    public GameObject attackSprite;
+
     public bool bOverHeated = false;
 
     float m_cooldownTimer = 0.0f;
@@ -18,7 +20,6 @@ public class HitComponent : MonoBehaviour
     {
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!bOverHeated) { return; }
@@ -92,18 +93,25 @@ public class HitComponent : MonoBehaviour
 
     float getWidth()
     {
+        Animator childAnimator = attackSprite.GetComponent<Animator>();
+
         switch (Type)
         {
             case EAttackType.Half:
+                childAnimator.Play("Scratch");
                 return Mathf.PI;
             case EAttackType.Quarter:
+                childAnimator.Play("Fireblast");
                 return Mathf.PI/2;
             case EAttackType.Eigth:
             case EAttackType.None:
+                childAnimator.Play("BasicAttack");
                 return Mathf.PI/4;
             case EAttackType.Line:
+                childAnimator.Play("Blast");
                 return Range/5;
-            default: 
+            default:
+                childAnimator.Play("BasicAttack");
                 return 0;
         }
     }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-
     [HideInInspector] public StateMachine m_fsm;
     [SerializeField] List<EStateId> States;
     
@@ -39,11 +38,13 @@ public class Enemy : Character
 
     void updateAltarCount()
     {
-        Altar altar= getAltarOfSameType();
+        Altar altar = getAltarOfSameType();
+        if(!altar) { return; }
 
-        altar?.altarProgress.souls += 1;
+        altar.altarProgress.souls += 1;
         
-        if(altar?.altarProgress.souls == altar?.altarProgress.threshold){
+        if (altar.altarProgress.souls == altar.altarProgress.threshold)
+        {
             foreach (Altar a in FindObjectsOfType<Altar>())
             {
                 if (a.Type != Type && !Player.Instance.playerProgress.maskUnlocked.Contains(a.PairTypeToAttack()))

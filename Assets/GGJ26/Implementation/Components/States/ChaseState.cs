@@ -11,6 +11,7 @@ public class Chase : IState
     HitComponent m_hitBox;
 
     MoveComponent m_movement;
+    Animator m_animator;
 
     bool playerDetected = false;
 
@@ -26,16 +27,16 @@ public class Chase : IState
         m_perception = m_character.transform.GetComponent<PerceptionComponent>();
         m_movement = m_character.transform.GetComponent<MoveComponent>();
         m_hitBox = m_character.transform.GetComponent<HitComponent>();
+        m_animator = m_character.transform.GetComponent<Animator>();
 
+        m_animator.Play("Walk"); // esta tiene que loopear
         m_perception.OnPlayerDetected += playerDetection;
     }
     public void Exit()
     {
         m_perception.OnPlayerDetected -= playerDetection;
     }
-    public void PhysicsUpdate()
-    {     
-    }
+    public void PhysicsUpdate() { }
 
     public void GameplayUpdate() 
     {

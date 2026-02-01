@@ -16,9 +16,9 @@ public class Altar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(altarProgress.souls >= altarProgress.threshold && !Player.Instance.masksUnlocked.Contains(Atype))
+        if(altarProgress.souls >= altarProgress.threshold && !Player.Instance.playerProgress.maskUnlocked.Contains(Atype))
         {
-            Player.Instance.playerProgress.maskUnlocked.Insert(Atype);
+            Player.Instance.playerProgress.maskUnlocked.Add(Atype);
         }
     }
 
